@@ -11,7 +11,7 @@ export default function Index() {
           <div id="welcome">
             <h1>
               <span> Hello there, </span>
-              Welcome next-app 👋
+              Welcome next-app monorepo 👋
             </h1>
           </div>
 

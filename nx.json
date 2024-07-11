@@ -40,6 +40,19 @@
       "plugin": "@nx/jest/plugin",
       "options": {
         "targetName": "test"
+      },
+      "exclude": [
+        "apps/template-nestjs-backend-e2e/**/*",
+        "apps/template-nestjs-analytics-e2e/**/*",
+        "apps/template-nestjs-communication-e2e/**/*"
+      ]
+    },
+    {
+      "plugin": "@nx/webpack/plugin",
+      "options": {
+        "buildTargetName": "build",
+        "serveTargetName": "serve",
+        "previewTargetName": "preview"
       }
     }
   ],

@@ -1,0 +1,24 @@
+{
+  "name": "template-nestjs-communication",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/template-nestjs-communication/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "template-nestjs-communication:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "template-nestjs-communication:build:development"
+        },
+        "production": {
+          "buildTarget": "template-nestjs-communication:build:production"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "template-nestjs-analytics",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/template-nestjs-analytics/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "template-nestjs-analytics:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "template-nestjs-analytics:build:development"
+        },
+        "production": {
+          "buildTarget": "template-nestjs-analytics:build:production"
+        }
+      }
+    }
+  }
+}
