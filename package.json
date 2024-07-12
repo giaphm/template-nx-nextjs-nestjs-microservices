@@ -4,9 +4,13 @@
   "license": "MIT",
   "scripts": {
     "build:next-app": "pnpx nx build next-app",
+    "build:template-nestjs-analytics": "pnpx nx build template-nestjs-analytics",
     "build:template-nestjs-backend": "pnpx nx build template-nestjs-backend",
+    "build:template-nestjs-communication": "pnpx nx build template-nestjs-communication",
     "dev:next-app": "pnpx nx dev next-app",
+    "serve:template-nestjs-analytics": "pnpx nx serve template-nestjs-analytics",
     "serve:template-nestjs-backend": "pnpx nx serve template-nestjs-backend",
+    "serve:template-nestjs-communication": "pnpx nx serve template-nestjs-communication",
     "prisma:generate": "pnpx prisma generate"
   },
   "private": true,

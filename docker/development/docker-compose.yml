@@ -32,25 +32,26 @@ services:
     networks:
       - development_networks
 
-  # nestjs-analytics:
-  #   container_name: nestjs-analytics
-  #   build:
-  #     context: ../../apps/template-nestjs/template-nestjs-analytics
-  #     dockerfile: ./Dockerfile
-  #     target: development
-  #   volumes:
-  #     - ../../apps/template-nestjs/template-nestjs-analytics:/usr/src/app
-  #   env_file:
-  #     - ../../apps/template-nestjs/template-nestjs-analytics/.env
-  #   # command: pnpm start:dev
-  #   command: sh -c "dockerize -wait tcp://zookeeper:2181 -wait tcp://kafka:9092 -wait tcp://postgres:5432 -wait tcp://redis:6379 -timeout 60s pnpm start:dev"
-  #   ports:
-  #     - 3002:3002
-  #   depends_on:
-  #     - redis
-  #     - kafka
-  #   networks:
-  #     - development_networks
+  nestjs-analytics:
+    container_name: nestjs-analytics
+    build:
+      context: ../../
+      dockerfile: ./apps/template-nestjs-analytics/Dockerfile
+      target: development
+    volumes:
+      - staticbuild:/usr/src/app/node_modules
+      - ../..:/usr/src/app
+    env_file:
+      - ../../.env
+    # command: pnpm start:dev
+    command: sh -c "dockerize -wait tcp://zookeeper:2181 -wait tcp://kafka:9092 -wait tcp://postgres:5432 -wait tcp://redis:6379 -timeout 60s pnpm serve:template-nestjs-analytics"
+    ports:
+      - 3002:3002
+    depends_on:
+      - redis
+      - kafka
+    networks:
+      - development_networks
 
   nestjs-backend:
     container_name: nestjs-backend
@@ -64,33 +65,34 @@ services:
     env_file:
       - ../../.env
     # command: pnpm start:dev
-    command: pnpm serve:template-nestjs-backend
-    # command: sh -c "dockerize -wait tcp://zookeeper:2181 -wait tcp://kafka:9092 -wait tcp://postgres:5432 -wait tcp://redis:6379 -timeout 60s pnpm start:dev"
+    # command: pnpm serve:template-nestjs-backend
+    command: sh -c "dockerize -wait tcp://zookeeper:2181 -wait tcp://kafka:9092 -wait tcp://postgres:5432 -wait tcp://redis:6379 -timeout 60s pnpm serve:template-nestjs-backend"
     ports:
       - 3001:3001
-    # depends_on:
-    #   - redis
-    #   - kafka
+    depends_on:
+      - redis
+      - kafka
     networks:
       - development_networks
 
-  # nestjs-communication:
-  #   container_name: nestjs-communication
-  #   build:
-  #     context: ../../apps/template-nestjs/template-nestjs-communication
-  #     dockerfile: ./Dockerfile
-  #     target: development
-  #   volumes:
-  #     - ../../apps/template-nestjs/template-nestjs-communication:/usr/src/app
-  #   env_file:
-  #     - ../../apps/template-nestjs/template-nestjs-communication/.env
-  #   # command: pnpm start:dev
-  #   command: sh -c "dockerize -wait tcp://zookeeper:2181 -wait tcp://kafka:9092 -wait tcp://postgres:5432 -wait tcp://redis:6379 -timeout 60s pnpm start:dev"
-  #   depends_on:
-  #     - redis
-  #     - kafka
-  #   networks:
-  #     - development_networks
+  nestjs-communication:
+    container_name: nestjs-communication
+    build:
+      context: ../../
+      dockerfile: ./apps/template-nestjs-communication/Dockerfile
+      target: development
+    volumes:
+      - staticbuild:/usr/src/app/node_modules
+      - ../..:/usr/src/app
+    env_file:
+      - ../../.env
+    # command: pnpm start:dev
+    command: sh -c "dockerize -wait tcp://zookeeper:2181 -wait tcp://kafka:9092 -wait tcp://postgres:5432 -wait tcp://redis:6379 -timeout 60s pnpm serve:template-nestjs-communication"
+    depends_on:
+      - redis
+      - kafka
+    networks:
+      - development_networks
 
   redis:
     image: redis
