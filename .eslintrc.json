@@ -5,6 +5,7 @@
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "extends": ["plugin:@typescript-eslint/recommended"],
       "rules": {
         "@nx/enforce-module-boundaries": [
           "error",
@@ -18,7 +19,9 @@
               }
             ]
           }
-        ]
+        ],
+        "prefer-const": "error",
+        "no-console": ["error", { "allow": ["warn", "error"] }]
       }
     },
     {

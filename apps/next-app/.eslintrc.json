@@ -1,16 +1,23 @@
 {
+  "plugins": ["@typescript-eslint"],
   "extends": [
     "plugin:@nx/react-typescript",
     "next",
     "next/core-web-vitals",
-    "../../.eslintrc.json"
+    "../../.eslintrc.json",
+    "plugin:@typescript-eslint/recommended"
   ],
   "ignorePatterns": ["!**/*", ".next/**/*"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "rules": {
-        "@next/next/no-html-link-for-pages": ["error", "apps/next-app/pages"]
+        "@next/next/no-html-link-for-pages": ["error", "apps/next-app/pages"],
+        "prefer-const": "error",
+        "@typescript-eslint/no-unused-vars": "error",
+        "@typescript-eslint/no-explicit-any": "error",
+        "no-console": 2,
+        "@typescript-eslint/no-var-requires": 0
       }
     },
     {
