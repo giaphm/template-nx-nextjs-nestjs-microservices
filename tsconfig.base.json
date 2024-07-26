@@ -1,20 +1,42 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "strict": true,
+    "declaration": true,
+    "removeComments": true,
+    "allowSyntheticDefaultImports": true,
+    "strictPropertyInitialization": false,
+    "outDir": "./dist",
+    "incremental": true,
+    "strictNullChecks": true,
+    "noImplicitAny": false,
+    "strictBindCallApply": false,
+    "forceConsistentCasingInFileNames": false,
+    "noFallthroughCasesInSwitch": false,
+    // "strict": true,
     "rootDir": ".",
     "sourceMap": true,
-    "declaration": false,
+    // "declaration": false,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
+    // "strictPropertyInitialization": false,
     "target": "es2015",
     "module": "esnext",
     "lib": ["es2020", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@nx-nestjs-nextjs-prisma-docker-compose-starter/shared-ddd-hexagon": [
+        "libs/shared-ddd-hexagon/src/index.ts"
+      ],
+      "@nx-nestjs-nextjs-prisma-docker-compose-starter/shared-ddd-hexagon/*": [
+        "libs/shared-ddd-hexagon/src/*"
+      ],
+      "@template-nestjs-backend/*": ["apps/template-nestjs-backend/src/*"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
